@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "artist_albums",
+  "info": {
+    "singularName": "artist-album",
+    "pluralName": "artist-albums",
+    "displayName": "artist-album",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "artist": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::artist.artist",
+      "inversedBy": "artist_albums"
+    },
+    "collection": {
+      "type": "string"
+    },
+    "banner": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "artworks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::artwork.artwork",
+      "mappedBy": "artist_album"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "collection"
+    }
+  }
+}
